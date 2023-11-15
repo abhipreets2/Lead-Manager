@@ -18,7 +18,7 @@ async def create_user(user : UserCreate, db : Session = Depends(services.get_db)
     if db_user:
         raise HTTPException(status_code = 400, detail = "Email already exists")
     
-    await services.create_user(user, db)
+    user = await services.create_user(user, db)
 
     return await services.create_token(user)
 
