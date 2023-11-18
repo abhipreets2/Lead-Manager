@@ -23,6 +23,9 @@ def get_db():
 async def get_user_by_email(email : str, db : Session):
     return db.query(User).filter(User.email == email).first()
 
+async def get_all_user(db : Session):
+    return db.query(User).all()
+
 async def create_user(user : schema.UserCreate, db : Session):
     
     user_obj = User(email = user.email, hashed_password = hash.bcrypt.hash(user.hashed_password))

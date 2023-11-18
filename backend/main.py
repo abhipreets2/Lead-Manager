@@ -11,6 +11,10 @@ import services
 
 app = FastAPI()
 
+@app.get("/api/all_users")
+async def get_users(db : Session = Depends(services.get_db)):
+    return await services.get_all_user(db)
+
 @app.post("/api/users")
 async def create_user(user : UserCreate, db : Session = Depends(services.get_db)):
     
