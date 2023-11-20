@@ -64,4 +64,4 @@ async def update_lead(lead_id : int, lead : LeadCreate, user : User = Depends(se
 
 @app.get("/api")
 async def root():
-    return dict(message = "Test String")
+    return dict(message = "Leads Application")
